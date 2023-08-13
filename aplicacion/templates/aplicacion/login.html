@@ -1,0 +1,35 @@
+
+{% extends 'aplicacion/base.html' %} 
+{% load static %} 
+{% block titulo %}Login{% endblock titulo %} 
+{% block cabecera %}<br>
+ {% endblock cabecera %} 
+{% block contenido %}
+    <div style="display: flex; justify-content: center; align-items: center; height: 20vh;">
+        <div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <form action="" method="POST">
+                {% csrf_token %}
+                <table>
+                    {{ form.as_table }}
+                </table>
+                <br>
+                <div class="d-grid gap-2">
+                    <input type="submit" class="btn btn-primary" value="Iniciar sesion">
+                </div>
+            </form>
+
+            <br><br>
+            
+            {% if not usuario_registrado %}
+            <p style="text-align: center;">¿No estás registrado?</p>
+            <div style="text-align: center;">
+                <a href="{% url 'register' %}" class="register-button">Registrarse</a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock contenido %}
